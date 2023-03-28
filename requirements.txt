@@ -1,4 +1,0 @@
-django
-django_rest_framework
-psycopg2
-coverage==3.6
