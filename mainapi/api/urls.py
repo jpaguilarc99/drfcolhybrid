@@ -2,6 +2,8 @@ from rest_framework import routers
 
 from django.urls import path, include
 from .views import (
+    APIRoot,
+
     AboutListApiView,
     AboutUsDetailApiView,
 
@@ -31,6 +33,8 @@ from .views import (
 
 
 urlpatterns = [
+    path('', APIRoot.as_view(), name='api-root'),
+
     path('company/', CompanyListApiView.as_view(), name='company-list'),
 
     path('about/', AboutListApiView.as_view(), name='about-list'),

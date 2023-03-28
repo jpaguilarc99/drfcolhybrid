@@ -14,7 +14,7 @@ class APIRoot(APIView):
         data = {
             'about-us': reverse('about-list', request=request, format=format),
             'faq': reverse('faq-list', request=request, format=format),
-            # Agrega aquí los demás endpoints de tu API
+            
         }
         return Response(data)
 
