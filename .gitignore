@@ -1,0 +1,6 @@
+db.sqlite3
+Include/
+Lib/
+Scripts/
+pyenv.cfg
+__pycache__
