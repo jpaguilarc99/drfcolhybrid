@@ -44,7 +44,7 @@ urlpatterns = [
     path('faq/<int:faq_id>/', FaQDetailApiView.as_view()),
 
     path('product/', ProductApiView.as_view(), name='product-list'),
-    path('product/service', ProductServiceApiView.as_view()),
+    path('product/service', ProductServiceApiView.as_view(), name='prodservice-list'),
 
     path('contact-us/', ContactUsView.as_view(), name='contact-us-list'),
     path('contact-us/<int:pk>/', ContactUsUpdateDestroyView.as_view(), name='contact-us-form'),
@@ -52,10 +52,10 @@ urlpatterns = [
     path('contact-us-form/', FormListCreateView.as_view(), name='contact-us-list'),
     path('contact-us-form/<int:pk>/', FormsListUpdateDeleteView.as_view(), name='contact-us-form'),
 
-    path('tech-service/', ServiceListCreateView.as_view(), name='service_create'),
+    path('tech-service/', ServiceListCreateView.as_view(), name='tech-service-list'),
     path('tech-service/<int:pk>/', ServiceRetrieveUpdateDestroyView.as_view(), name='service_detail'),
 
-    path('tech-category/', CategoryListCreateView.as_view(), name='service_create'),
+    path('tech-category/', CategoryListCreateView.as_view(), name='tech-category-list'),
     path('tech-category/<int:pk>/', CategoryRetrieveUpdateDestroyView.as_view(), name='TechPivot_detail'),
 
     path('tech-pivot/', TechPivotListCreateView.as_view(), name='service_create'),

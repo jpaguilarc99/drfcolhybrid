@@ -12,9 +12,13 @@ from .serializers import AboutUsSerializer, FaQSerializer, ProductSerializer, Pr
 class APIRoot(APIView):
     def get(self, request, format=None):
         data = {
+            'company': reverse('company-list', request=request, format=format),
             'about-us': reverse('about-list', request=request, format=format),
             'faq': reverse('faq-list', request=request, format=format),
-            
+            'product': reverse('product-list', request=request, format=format),
+            'contact-us': reverse('contact-us-list', request=request, format=format),
+            'tech-service': reverse('tech-service-list', request=request, format=format),
+            'tech-category': reverse('tech-category-list', request=request, format=format),            
         }
         return Response(data)
 
