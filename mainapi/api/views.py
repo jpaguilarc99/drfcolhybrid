@@ -1,12 +1,22 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import viewsets, generics
+from rest_framework.reverse import reverse
 
 from rest_framework import status
 from rest_framework import permissions
 
 from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInfo, FormContactUs, TechService, TechCategory, TechPivotTable
 from .serializers import AboutUsSerializer, FaQSerializer, ProductSerializer, ProductServiceSerializer, CompanySerializer, ContactUsSerializer, FormSerializer, TechCategorySerializer, TechServiceSerializer, TechPivotSerializer
+
+class APIRoot(APIView):
+    def get(self, request, format=None):
+        data = {
+            'about-us': reverse('about-list', request=request, format=format),
+            'faq': reverse('faq-list', request=request, format=format),
+            # Agrega aquí los demás endpoints de tu API
+        }
+        return Response(data)
 
 ################################################### COMPANY INFO SECTION ###################################################
 # Company Info List API View
@@ -20,7 +30,7 @@ class CompanyListApiView(generics.ListAPIView):
 # About List API View
 class AboutListApiView(APIView):
     # Permissions 
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         '''
@@ -49,7 +59,7 @@ class AboutListApiView(APIView):
 # Detail About List API View
 class AboutUsDetailApiView(APIView):
     #Authentications
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self, aboutus_id, user_id):
         """
@@ -117,7 +127,7 @@ class AboutUsDetailApiView(APIView):
 # FaQ List API View
 class FaQListApiView(APIView):
     # Permissions 
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         '''
@@ -146,7 +156,7 @@ class FaQListApiView(APIView):
 # Detail FaQ List API View 
 class FaQDetailApiView(APIView):
     #Authentications
-    permission_classes = [permissions.IsAuthenticated]
+    #permission_classes = [permissions.IsAuthenticated]
 
     def get_object(self, faq_id, user_id):
         """
