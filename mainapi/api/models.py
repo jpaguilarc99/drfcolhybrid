@@ -6,7 +6,10 @@ class AboutUs(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True, auto_now=False, blank=True)
-    about_image = models.CharField(max_length=200)    
+    about_image = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = "About us"    
 
     def __str__(self):
         return self.title
@@ -16,6 +19,9 @@ class FaQ(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     issue_link = models.CharField(max_length=200)
+
+    class Meta:
+        verbose_name_plural = "FaQs"  
 
     def __str__(self):
         return self.title
@@ -58,6 +64,9 @@ class ContactUsInfo(models.Model):
     email = models.TextField()
     images = models.TextField()
 
+    class Meta:
+        verbose_name_plural = "Contact us"  
+
     def __str__(self):
         return self.location
 
@@ -87,6 +96,8 @@ class FormContactUs(models.Model):
     formtype = models.CharField( max_length=30,choices=FORM_TYPE_CHOICES)
     costumertype = models.CharField( max_length=30,choices=COSTUMER_TYPE_CHOICES, null=True)
 
+    class Meta:
+        verbose_name_plural = "Form contact us"  
 
     def __str__(self):
         return self.firstname
@@ -95,6 +106,8 @@ class FormContactUs(models.Model):
 class TechCategory(models.Model):
     name = models.CharField(max_length=200)
     
+    class Meta:
+        verbose_name_plural = "Tech categories"  
 
     def __str__(self):
         return self.name
