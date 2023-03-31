@@ -17,6 +17,10 @@ from django.contrib import admin
 from django.urls import path, include
 from api import urls as api_urls
 
+#Admin panel
+admin.site.site_header = 'Colhybrid'
+admin.site.index_title = 'Colhybrid administration'
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
