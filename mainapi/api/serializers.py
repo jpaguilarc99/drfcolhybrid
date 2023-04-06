@@ -7,31 +7,31 @@ from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInf
 class AboutUsSerializer(serializers.ModelSerializer):
     class Meta:
         model = AboutUs
-        fields = ("title", "description", "timestamp", "about_image")
+        fields = '__all__'
 
 #FaQ Serializer
 class FaQSerializer(serializers.ModelSerializer):
     class Meta:
         model = FaQ
-        fields = ("title", "description", "issue_link")
+        fields = '__all__'
 
 #Product Serializer
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ("product_name", "product_description")
+        fields = '__all__'
 
 #Product Service Serializer
 class ProductServiceSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductService
-        fields = ("service_name", "service_description")
+        fields = '__all__'
 
 #Company Serializer
 class CompanySerializer(serializers.ModelSerializer):
     class Meta:
         model = Company
-        fields = ("company_name", "resources", "logo")
+        fields = '__all__'
 
 
 ### Macha
