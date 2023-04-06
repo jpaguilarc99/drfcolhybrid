@@ -146,7 +146,7 @@ class IndustryCategory(models.Model):
     category_name = models.CharField(max_length=100)
 
     class Meta:
-        verbose_name_plural = "Categories by Technology"
+        verbose_name_plural = "Categories by Industry"
 
     def __str__(self):
         return self.category_name
@@ -159,7 +159,7 @@ class ServiceByIndustry(models.Model):
     short_description = models.CharField(max_length=250)
 
     class Meta:
-        verbose_name_plural = "Service by Technology"
+        verbose_name_plural = "Service by Industry"
 
     def __str__(self):
         return self.service_name
