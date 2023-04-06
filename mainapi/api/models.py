@@ -117,7 +117,7 @@ class TechCategory(models.Model):
 class ServiceByTechnology(models.Model):
     
     service_name = models.CharField(max_length=100)
-    service_description = models.TextField()
+    service_description = models.TextField(default=True)
     short_description = models.CharField(max_length=250)
 
     class Meta:
@@ -155,7 +155,7 @@ class IndustryCategory(models.Model):
 class ServiceByIndustry(models.Model):
     
     service_name = models.CharField(max_length=100)
-    service_description = models.TextField()
+    service_description = models.TextField(default=True)
     short_description = models.CharField(max_length=250)
 
     class Meta:
