@@ -105,7 +105,7 @@ class FormContactUs(models.Model):
 #Technology Category Model
 class TechCategory(models.Model):
 
-    category_name = models.CharField(max_length=100)
+    category_name = models.CharField(max_length=100, default='default_category_name')
 
     class Meta:
         verbose_name_plural = "Categories by Technology"
@@ -116,8 +116,8 @@ class TechCategory(models.Model):
 #Service By Technology Model  
 class ServiceByTechnology(models.Model):
     
-    service_name = models.CharField(max_length=100)
-    service_description = models.TextField(default=True)
+    service_name = models.CharField(max_length=100, default='default_service_name')
+    service_description = models.TextField()
     short_description = models.CharField(max_length=250)
 
     class Meta:
@@ -143,7 +143,7 @@ class ServiceTechnologyPivot(models.Model):
 #Industry Category Model
 class IndustryCategory(models.Model):
 
-    category_name = models.CharField(max_length=100)
+    category_name = models.CharField(max_length=100, default='default_category_name')
 
     class Meta:
         verbose_name_plural = "Categories by Industry"
@@ -154,7 +154,7 @@ class IndustryCategory(models.Model):
 #Service By Industry Model  
 class ServiceByIndustry(models.Model):
     
-    service_name = models.CharField(max_length=100)
+    service_name = models.CharField(max_length=100, default='default_serv_name')
     service_description = models.TextField(default=True)
     short_description = models.CharField(max_length=250)
 
