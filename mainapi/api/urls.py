@@ -21,14 +21,23 @@ from .views import (
     FormListCreateView,
     FormsListUpdateDeleteView,
 
-    CategoryListCreateView,
-    CategoryRetrieveUpdateDestroyView,
+    TechnologyCategoryListCreateView,
+    TechnologyCategoryRetrieveUpdateDestroyView,
 
-    ServiceListCreateView,
-    ServiceRetrieveUpdateDestroyView,
+    ServiceByTechnologyListCreateView,
+    ServiceByTechnologyRetrieveUpdateDestroyView,
 
     TechPivotListCreateView,
     TechPivotRetrieveUpdateDestroyView,
+
+    IndustryCategoryListCreateView,
+    IndustryCategoryRetrieveUpdateDestroyView,
+
+    ServiceByIndustryListCreateView,
+    ServiceByIndustryRetrieveUpdateDestroyView,
+
+    IndustryPivotListCreateView,
+    IndustryPivotRetrieveUpdateDestroyView,
 )
 
 
@@ -49,15 +58,24 @@ urlpatterns = [
     path('contact-us/', ContactUsView.as_view(), name='contact-us-list'),
     path('contact-us/<int:pk>/', ContactUsUpdateDestroyView.as_view(), name='contact-us-form'),
 
-    path('contact-us-form/', FormListCreateView.as_view(), name='contact-us-list'),
+    path('contact-us-form/', FormListCreateView.as_view(), name='contact-us-form-list'),
     path('contact-us-form/<int:pk>/', FormsListUpdateDeleteView.as_view(), name='contact-us-form'),
 
-    path('tech-service/', ServiceListCreateView.as_view(), name='tech-service-list'),
-    path('tech-service/<int:pk>/', ServiceRetrieveUpdateDestroyView.as_view(), name='service_detail'),
+    path('tech-category/', TechnologyCategoryListCreateView.as_view(), name='tech-category-list'),
+    path('tech-category/<int:pk>/', TechnologyCategoryRetrieveUpdateDestroyView.as_view(), name='TechPivot_detail'),
 
-    path('tech-category/', CategoryListCreateView.as_view(), name='tech-category-list'),
-    path('tech-category/<int:pk>/', CategoryRetrieveUpdateDestroyView.as_view(), name='TechPivot_detail'),
+    path('tech-service/', ServiceByTechnologyListCreateView.as_view(), name='tech-service-list'),
+    path('tech-service/<int:pk>/', ServiceByTechnologyRetrieveUpdateDestroyView.as_view(), name='tech-service-detail'),    
 
-    path('tech-pivot/', TechPivotListCreateView.as_view(), name='service_create'),
+    path('tech-pivot/', TechPivotListCreateView.as_view(), name='tech-pivot'),
     path('tech-pivot/<int:pk>/', TechPivotRetrieveUpdateDestroyView.as_view(), name='TechPivot_detail'),
+
+    path('industry-category/', IndustryCategoryListCreateView.as_view(), name='industry-category-list'),
+    path('industry-category/<int:pk>/', IndustryCategoryRetrieveUpdateDestroyView.as_view(), name='IndustryPivot_detail'),
+
+    path('industry-service/', ServiceByIndustryListCreateView.as_view(), name='industry-service-list'),
+    path('industry-service/<int:pk>/', ServiceByIndustryRetrieveUpdateDestroyView.as_view(), name='industry-service-detail'),    
+
+    path('industry-pivot/', IndustryPivotListCreateView.as_view(), name='industry-pivot'),
+    path('industry-pivot/<int:pk>/', IndustryPivotRetrieveUpdateDestroyView.as_view(), name='IndustryPivot_detail'),
 ]

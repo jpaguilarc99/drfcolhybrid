@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInfo, FormContactUs, TechCategory, TechService, TechPivotTable
+from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInfo, FormContactUs, TechCategory, ServiceByTechnology, ServiceTechnologyPivot, IndustryCategory, ServiceByIndustry, ServiceIndustryPivot
 
 ### Agui
 
@@ -75,22 +75,38 @@ class FormSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Invalid Data.")
         return value
 
-#Tech Service Serializer
-class TechServiceSerializer(serializers.ModelSerializer):
-    category_name = serializers.CharField(write_only=True)
-
-    class Meta:
-        model = TechService
-        fields = '__all__'
-
-#Tech Category Serializer
+#Technology Category Serializer
 class TechCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = TechCategory
         fields = '__all__'
 
-#Tech Pivot Serializer
-class TechPivotSerializer(serializers.ModelSerializer):
+#Service By Technology Serializer
+class ServiceByTechnologySerializer(serializers.ModelSerializer):
     class Meta:
-        model = TechPivotTable
-        fields = '__all__'       
+        model = ServiceByTechnology
+        fields = '__all__'
+
+#Service by Technology Pivot Serializer
+class ServiceTechnologyPivotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceTechnologyPivot
+        fields = '__all__'      
+
+#Industry Category Serializer
+class IndustryCategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = IndustryCategory
+        fields = '__all__'
+
+#Service by Industry Serializer
+class ServiceByIndustrySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceByIndustry
+        fields = '__all__'
+
+#Service by Industry Pivot Serializer
+class ServiceIndustryPivotSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ServiceIndustryPivot
+        fields = '__all__'    

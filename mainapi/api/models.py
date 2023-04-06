@@ -102,24 +102,78 @@ class FormContactUs(models.Model):
     def __str__(self):
         return self.firstname
 
-#Tech Category Model
+#Technology Category Model
 class TechCategory(models.Model):
-    name = models.CharField(max_length=200)
-    
+
+    category_name = models.CharField(max_length=100)
+
     class Meta:
-        verbose_name_plural = "Tech categories"  
+        verbose_name_plural = "Categories by Technology"
 
     def __str__(self):
-        return self.name
+        return self.category_name
 
-#Tech Service Model
-class TechService(models.Model):
-    name = models.CharField(max_length=100)    
+#Service By Technology Model  
+class ServiceByTechnology(models.Model):
+    
+    service_name = models.CharField(max_length=100)
+    service_description = models.TextField()
+    short_description = models.CharField(max_length=250)
+
+    class Meta:
+        verbose_name_plural = "Service by Technology"
 
     def __str__(self):
-        return self.name
+        return self.service_name
 
-#Pivot Table Tech Service/Tech Category
-class TechPivotTable(models.Model):
-    service_id=  models.ForeignKey(TechService, on_delete=models.CASCADE)
-    category_id = models.ForeignKey(TechCategory, on_delete=models.CASCADE)
+#Service By Technology Pivot Model
+class ServiceTechnologyPivot(models.Model):
+    tech_category_id = models.ForeignKey(
+        'TechCategory',
+        on_delete=models.CASCADE,
+        default= None,
+    )
+
+    service_technology_id = models.ForeignKey(
+        'ServiceByTechnology',
+        on_delete=models.CASCADE,
+        default= None,
+    )
+
+#Industry Category Model
+class IndustryCategory(models.Model):
+
+    category_name = models.CharField(max_length=100)
+
+    class Meta:
+        verbose_name_plural = "Categories by Technology"
+
+    def __str__(self):
+        return self.category_name
+
+#Service By Industry Model  
+class ServiceByIndustry(models.Model):
+    
+    service_name = models.CharField(max_length=100)
+    service_description = models.TextField()
+    short_description = models.CharField(max_length=250)
+
+    class Meta:
+        verbose_name_plural = "Service by Technology"
+
+    def __str__(self):
+        return self.service_name
+
+#Service By Industry Pivot Model
+class ServiceIndustryPivot(models.Model):
+    industry_category_id = models.ForeignKey(
+        'IndustryCategory',
+        on_delete=models.CASCADE,
+        default= None,
+    )
+
+    service_industry_id = models.ForeignKey(
+        'ServiceByIndustry',
+        on_delete=models.CASCADE,
+        default= None,
+    )

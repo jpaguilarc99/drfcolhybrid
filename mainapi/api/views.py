@@ -6,19 +6,31 @@ from rest_framework.reverse import reverse
 from rest_framework import status
 from rest_framework import permissions
 
-from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInfo, FormContactUs, TechService, TechCategory, TechPivotTable
-from .serializers import AboutUsSerializer, FaQSerializer, ProductSerializer, ProductServiceSerializer, CompanySerializer, ContactUsSerializer, FormSerializer, TechCategorySerializer, TechServiceSerializer, TechPivotSerializer
+from .models import AboutUs, FaQ, Product, ProductService, Company, ContactUsInfo, FormContactUs, TechCategory, ServiceByTechnology, ServiceTechnologyPivot, IndustryCategory, ServiceByIndustry, ServiceIndustryPivot
+from .serializers import AboutUsSerializer, FaQSerializer, ProductSerializer, ProductServiceSerializer, CompanySerializer, ContactUsSerializer, FormSerializer, TechCategorySerializer, ServiceByTechnologySerializer, ServiceTechnologyPivotSerializer, IndustryCategorySerializer, ServiceByIndustrySerializer, ServiceIndustryPivotSerializer
 
 class APIRoot(APIView):
     def get(self, request, format=None):
         data = {
             'company': reverse('company-list', request=request, format=format),
+
             'about-us': reverse('about-list', request=request, format=format),
+
             'faq': reverse('faq-list', request=request, format=format),
-            'product': reverse('product-list', request=request, format=format),
+
+            'featured-products': reverse('product-list', request=request, format=format),
+            'featured-products-services': reverse('prodservice-list', request=request, format=format),
+
             'contact-us': reverse('contact-us-list', request=request, format=format),
+            'contact-us-form': reverse('contact-us-form-list', request=request, format=format),
+
             'tech-service': reverse('tech-service-list', request=request, format=format),
-            'tech-category': reverse('tech-category-list', request=request, format=format),            
+            'tech-category': reverse('tech-category-list', request=request, format=format),   
+            'tech-pivot': reverse('tech-pivot', request=request, format=format),    
+
+            'industry-service': reverse('industry-service-list', request=request, format=format),
+            'industry-category': reverse('industry-category-list', request=request, format=format),   
+            'industry-pivot': reverse('industry-pivot', request=request, format=format),       
         }
         return Response(data)
 
@@ -248,30 +260,57 @@ class FormsListUpdateDeleteView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FormContactUs.objects.all()
     serializer_class = FormSerializer
 
-################################################### TECH CATEGORY SECTION ###################################################
-class CategoryListCreateView(generics.ListCreateAPIView):
+################################################### TECHNOLOGY CATEGORY SECTION ###################################################
+class TechnologyCategoryListCreateView(generics.ListCreateAPIView):
     queryset = TechCategory.objects.all()
     serializer_class = TechCategorySerializer
 
-class CategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+class TechnologyCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = TechCategory.objects.all()
     serializer_class = TechCategorySerializer
 
-################################################### TECH SERVICE SECTION ###################################################
-class ServiceListCreateView(generics.ListCreateAPIView):
-    queryset = TechService.objects.all()
-    serializer_class = TechServiceSerializer
+################################################### SERVICE BY TECHNOLOGY SECTION ###################################################
+class ServiceByTechnologyListCreateView(generics.ListCreateAPIView):
+    queryset = ServiceByTechnology.objects.all()
+    serializer_class = ServiceByTechnologySerializer
 
-class ServiceRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TechService.objects.all()
-    serializer_class = TechServiceSerializer
+class ServiceByTechnologyRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ServiceByTechnology.objects.all()
+    serializer_class = ServiceByTechnologySerializer
 
-################################################### PIVOT TABLE SECTION ###################################################
+################################################### SERVICE TECHNOLOGY PIVOT TABLE SECTION ###################################################
 class TechPivotListCreateView(generics.ListCreateAPIView):
-    queryset = TechPivotTable.objects.all()
-    serializer_class = TechPivotSerializer
+    queryset = ServiceTechnologyPivot.objects.all()
+    serializer_class = ServiceTechnologyPivotSerializer
 
 class TechPivotRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = TechPivotTable.objects.all()
-    serializer_class = TechPivotSerializer
+    queryset = ServiceTechnologyPivot.objects.all()
+    serializer_class = ServiceTechnologyPivotSerializer
 
+
+################################################### INDUSTRY CATEGORY SECTION ###################################################
+class IndustryCategoryListCreateView(generics.ListCreateAPIView):
+    queryset = IndustryCategory.objects.all()
+    serializer_class = IndustryCategorySerializer
+
+class IndustryCategoryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = IndustryCategory.objects.all()
+    serializer_class = TechCategorySerializer
+
+################################################### SERVICE BY INDUSTRY SECTION ###################################################
+class ServiceByIndustryListCreateView(generics.ListCreateAPIView):
+    queryset = ServiceByIndustry.objects.all()
+    serializer_class = ServiceByIndustrySerializer
+
+class ServiceByIndustryRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ServiceByIndustry.objects.all()
+    serializer_class = ServiceByIndustrySerializer
+
+################################################### SERVICE INDUSTRY PIVOT TABLE SECTION ###################################################
+class IndustryPivotListCreateView(generics.ListCreateAPIView):
+    queryset = ServiceIndustryPivot.objects.all()
+    serializer_class = ServiceIndustryPivotSerializer
+
+class IndustryPivotRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = ServiceTechnologyPivot.objects.all()
+    serializer_class = ServiceIndustryPivotSerializer
