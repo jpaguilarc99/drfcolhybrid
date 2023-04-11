@@ -106,7 +106,7 @@ class FormContactUs(models.Model):
 class TechCategory(models.Model):
 
     category_name = models.CharField(max_length=100, default='default_category_name')
-    description_tech = models.TextField()
+    description_tech = models.TextField(default="")
 
     class Meta:
         verbose_name_plural = "Categories by Technology"
@@ -118,7 +118,7 @@ class TechCategory(models.Model):
 class ServiceByTechnology(models.Model):
     
     service_name = models.CharField(max_length=100, default='default_service_name')
-    service_description = models.TextField(default="")
+    service_description = models.TextField()
     short_description = models.CharField(max_length=250)
 
     class Meta:
