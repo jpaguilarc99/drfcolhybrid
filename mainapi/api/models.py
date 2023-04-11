@@ -106,7 +106,7 @@ class FormContactUs(models.Model):
 class TechCategory(models.Model):
 
     category_name = models.CharField(max_length=100, default='default_category_name')
-    description_tech = models.TextField(default="")
+    description_tech = models.TextField(default="default-tech-value")
 
     class Meta:
         verbose_name_plural = "Categories by Technology"
@@ -145,7 +145,7 @@ class ServiceTechnologyPivot(models.Model):
 class IndustryCategory(models.Model):
 
     category_name = models.CharField(max_length=100, default='default_category_name')
-    description_industry = models.TextField(default="")
+    description_industry = models.TextField(default="default-ind-value")
 
     class Meta:
         verbose_name_plural = "Categories by Industry"
