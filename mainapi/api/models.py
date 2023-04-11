@@ -118,7 +118,7 @@ class TechCategory(models.Model):
 class ServiceByTechnology(models.Model):
     
     service_name = models.CharField(max_length=100, default='default_service_name')
-    service_description = models.TextField()
+    service_description = models.TextField(default="")
     short_description = models.CharField(max_length=250)
 
     class Meta:
@@ -145,7 +145,7 @@ class ServiceTechnologyPivot(models.Model):
 class IndustryCategory(models.Model):
 
     category_name = models.CharField(max_length=100, default='default_category_name')
-    description_industry = models.TextField()
+    description_industry = models.TextField(default="")
 
     class Meta:
         verbose_name_plural = "Categories by Industry"
